@@ -19,7 +19,8 @@ const Navbar = () => {
         
         
         <div className="flex items-center space-x-3">
-          <img src={gymLogo} alt="Gym Logo" className="h-12 w-auto rounded-full border-2 border-gym-gold shadow-[0_0_15px_rgba(217,166,22,0.5)] transition-transform hover:scale-110" />
+          <a href="home"><img src={gymLogo} alt="Gym Logo" className="h-12 w-auto rounded-full border-2 border-gym-gold shadow-[0_0_15px_rgba(217,166,22,0.5)] transition-transform hover:scale-110" />
+          </a>
           
         </div>
 

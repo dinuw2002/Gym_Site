@@ -1,6 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import gymAboutImg from '../assets/gym-about.jpg';
+
 const aboutData = [
   {
     title: "Our Mission",
@@ -17,24 +18,35 @@ const aboutData = [
 ];
 
 const About = () => {
+  const [index, setIndex] = useState(0);
+
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % aboutData.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section id="about" className="bg-white dark:bg-gym-black py-20 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
+    <section id="about" className="bg-white dark:bg-gym-black py-24 px-6 overflow-hidden transition-colors duration-300">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
         
-        {/* Left Column: Sticky Image */}
-        <div className="md:w-1/2 md:sticky md:top-32 h-fit">
-          <div className="relative group">
-            <div className="absolute -inset-2 bg-gym-gold/20 rounded-sm blur-lg"></div>
+        {/* Left Column: Image with Gold Accent */}
+        <div className="md:w-1/2 w-full">
+          <div className="relative">
+            <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-gym-gold"></div>
             <img 
               src={gymAboutImg} 
-              alt="Gym Interior" 
-              className="relative rounded-sm shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 border-b-8 border-gym-gold"
+              alt="Gym Facility" 
+              className="rounded-sm shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full"
             />
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-gym-gold"></div>
           </div>
         </div>
 
-        {/* Right Column: Scrolling Carousel Content */}
-        <div className="md:w-1/2 space-y-24 py-10">
+        {/* Right Column: Vertical Auto-Carousel */}
+        <div className="md:w-1/2 w-full space-y-8">
           <div className="space-y-2">
             <h2 className="text-gym-gold font-black uppercase tracking-[0.3em] text-sm">
               Why Choose Us
@@ -42,23 +54,36 @@ const About = () => {
             <div className="h-1 w-20 bg-gym-gold"></div>
           </div>
 
-          {aboutData.map((item, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: false, margin: "-100px" }}
-              className="min-h-[300px] flex flex-col justify-center"
-            >
-              <h3 className="text-4xl md:text-5xl font-black dark:text-white text-gym-black uppercase italic mb-6">
-                {item.title}
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed font-medium border-l-4 border-gym-gold pl-6">
-                {item.content}
-              </p>
-            </motion.div>
-          ))}
+          {/* Animation Container */}
+          <div className="relative h-[300px] flex items-center overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}   // Slides up from bottom
+                animate={{ opacity: 1, y: 0 }}    // Settles in center
+                exit={{ opacity: 0, y: -50 }}     // Slides out through top
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="absolute w-full"
+              >
+                <h3 className="text-4xl md:text-5xl font-black dark:text-white text-gym-black uppercase italic mb-6 leading-none">
+                  {aboutData[index].title}
+                </h3>
+                <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl leading-relaxed font-medium border-l-4 border-gym-gold pl-6">
+                  {aboutData[index].content}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="flex space-x-3 mt-8">
+            {aboutData.map((_, i) => (
+              <div 
+                key={i} 
+                className={`h-1 transition-all duration-500 ${i === index ? 'w-12 bg-gym-gold' : 'w-4 bg-gray-300 dark:bg-gym-gray'}`}
+              />
+            ))}
+          </div>
         </div>
 
       </div>
