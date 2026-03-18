@@ -1,21 +1,10 @@
 @import "tailwindcss";
 
-@theme {
-  --color-gym-gold: #D9A616;
-  /* Light mode defaults */
-  --color-gym-black: #1A1A1A;
-  --color-gym-gray: #2D2D2D;
-  --color-gym-light: #F2F2F2;
-}
-
-/* Force colors to change when the .dark class is present on the root */
+/* This line tells Tailwind to enable the dark selector */
 @variant dark (&:where(.dark, .dark *));
 
-@layer base {
-  .dark {
-    --color-gym-light: #1A1A1A; /* In dark mode, 'light' becomes black */
-    --color-gym-black: #F2F2F2; /* In dark mode, 'black' becomes light */
-    background-color: #1A1A1A;
-    color: white;
-  }
+@theme {
+  --color-gym-gold: #D9A616;
+  --color-gym-black: #1A1A1A;
+  --color-gym-gray: #2D2D2D;
 }

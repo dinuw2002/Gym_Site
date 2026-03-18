@@ -3,7 +3,7 @@ import gymImage from '../assets/gym-hero.jpg';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gym-black pt-24 pb-12 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center bg-white dark:bg-gym-black pt-24 pb-12 overflow-hidden">
       
       {/* Background Accent */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gym-gold/5 blur-[120px] pointer-events-none"></div>
@@ -15,7 +15,7 @@ const Hero = () => {
           {/* Left Column: Heading */}
           <div className="space-y-4">
             
-            <h1 className="text-5xl md:text-7xl font-black text-white leading-tight uppercase italic tracking-tighter">
+            <h1 className="text-5xl md:text-7xl font-black dark:text-white leading-tight uppercase italic tracking-tighter">
               Unleash <br /> 
               Your <span className="text-gym-gold">Potential</span> <br /> 
               at Our Brand <br /> 
@@ -38,7 +38,7 @@ const Hero = () => {
 
         {/* Bottom Section */}
         <div className="max-w-3xl space-y-8 border-t border-white/10 pt-8">
-          <p className="text-gray-400 text-xl md:text-2xl font-medium leading-relaxed">
+          <p className="dark:text-gray-400 text:black text-xl md:text-2xl font-medium leading-relaxed">
             Join a community dedicated to strength, health, and results. 
             Explore our premium facilities, expert trainers, and flexible membership plans today.
           </p>
