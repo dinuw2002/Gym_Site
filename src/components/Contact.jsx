@@ -1,97 +1,123 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
 
   const handleChange = (e) => {
+    if (showBanner) setShowBanner(false);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleClear = () => {
-    setFormData({ name: '', email: '', message: '' });
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Message Sent! (Integration Pending)");
-    handleClear();
+    setIsSubmitting(true);
+
+    // Simulate an API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setShowBanner(true);
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Auto-hide success message after 4 seconds
+      setTimeout(() => setShowBanner(false), 4000);
+    }, 1200);
   };
 
   return (
-    <section id="contact" className="py-24 bg-white dark:bg-gym-black px-6 transition-colors duration-300">
+    <section id="contact" className="py-24 bg-white dark:bg-gym-black px-6 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto">
+        
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-gym-gold font-black uppercase tracking-[0.3em] text-sm mb-2">Contact Us</h2>
-          <h1 className="text-5xl md:text-6xl font-black dark:text-white text-gym-black uppercase italic">Get In <span className="text-gym-gold">Touch</span></h1>
+          <h2 className="text-gym-gold font-black uppercase tracking-[0.3em] text-sm mb-2">Get In Touch</h2>
+          <h1 className="text-5xl md:text-7xl font-black dark:text-white text-gym-black uppercase italic tracking-tighter">
+            READY TO <span className="text-gym-gold">EVOLVE?</span>
+          </h1>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           
-          {/* Left Column: Info & Hours */}
-          <div className="space-y-10">
-            <div className="bg-gym-black dark:bg-gym-gray p-8 rounded-sm shadow-2xl border-l-4 border-gym-gold">
-              <h3 className="text-gym-gold font-bold uppercase mb-4 tracking-widest">Opening Hours</h3>
-              <ul className="text-gray-300 space-y-2 font-medium">
-                <li>Monday – Friday: <span className="text-white">5:00 AM – 11:00 PM</span></li>
-                <li>Saturday: <span className="text-white">7:00 AM – 8:00 PM</span></li>
-                <li>Sunday: <span className="text-white">8:00 AM – 6:00 PM</span></li>
+          {/* Left Column: Info Card */}
+          <div className="space-y-8">
+            <div className="bg-gym-gray p-10 rounded-sm shadow-2xl border-l-8 border-gym-gold">
+              <h3 className="text-gym-gold font-black uppercase italic text-xl mb-6 tracking-widest">Opening Hours</h3>
+              <ul className="space-y-4 text-gray-300 font-bold uppercase text-sm">
+                <li className="flex justify-between border-b border-white/10 pb-2">
+                  <span>Mon — Fri</span> <span className="text-white text-right">05:00 — 23:00</span>
+                </li>
+                <li className="flex justify-between border-b border-white/10 pb-2">
+                  <span>Saturday</span> <span className="text-white text-right">07:00 — 20:00</span>
+                </li>
+                <li className="flex justify-between pb-2">
+                  <span>Sunday</span> <span className="text-white text-right">08:00 — 18:00</span>
+                </li>
               </ul>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-2">
               <h3 className="text-2xl font-black dark:text-white text-gym-black uppercase italic">Location</h3>
-              <p className="text-gray-500 dark:text-gray-400 font-medium text-lg leading-relaxed">
-                Fitness Sports Center<br />
-                Pitipana North, Homagama.
+              <p className="text-gray-500 dark:text-gray-400 font-medium text-lg border-l-4 border-gym-gold pl-4">
+                Fitness Sports Center, Pitipana North, Homagama.
               </p>
             </div>
 
             {/* Social Icons */}
-            <div className="flex space-x-6 text-gym-black dark:text-white">
-              <a href="#" className="hover:text-gym-gold transition-transform hover:scale-125"><i className="fab fa-facebook text-3xl"></i></a>
-              <a href="#" className="hover:text-gym-gold transition-transform hover:scale-125"><i className="fas fa-map-marker-alt text-3xl"></i></a>
-              <a href="#" className="hover:text-gym-gold transition-transform hover:scale-125"><i className="fab fa-whatsapp text-3xl"></i></a>
+            <div className="flex space-x-8 pt-4">
+              {['facebook', 'map-marker-alt', 'whatsapp'].map((icon, idx) => (
+                <a key={idx} href="#" className="text-gym-black dark:text-white hover:text-gym-gold transition-all duration-300 hover:scale-125 text-3xl">
+                  <i className={`fab fa-${icon === 'map-marker-alt' ? '' : icon} fas fa-${icon === 'map-marker-alt' ? icon : ''}`}></i>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Right Column: Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-1">
-              <label className="dark:text-white text-gym-black font-bold uppercase text-xs">Name</label>
-              <input 
-                type="text" name="name" value={formData.name} onChange={handleChange} required
-                className="w-full p-4 bg-gray-100 dark:bg-gym-gray border-2 border-transparent focus:border-gym-gold rounded-sm dark:text-white outline-none transition-all"
-                placeholder="Enter your name"
-              />
-            </div>
-            <div className="space-y-1">
-              <label className="dark:text-white text-gym-black font-bold uppercase text-xs">Email</label>
-              <input 
-                type="email" name="email" value={formData.email} onChange={handleChange} required
-                className="w-full p-4 bg-gray-100 dark:bg-gym-gray border-2 border-transparent focus:border-gym-gold rounded-sm dark:text-white outline-none transition-all"
-                placeholder="Enter your email"
-              />
-            </div>
-            <div className="space-y-1">
-              <label className="dark:text-white text-gym-black font-bold uppercase text-xs">Message</label>
-              <textarea 
-                name="message" value={formData.message} onChange={handleChange} rows="4" required
-                className="w-full p-4 bg-gray-100 dark:bg-gym-gray border-2 border-transparent focus:border-gym-gold rounded-sm dark:text-white outline-none transition-all"
-                placeholder="How can we help?"
-              ></textarea>
-            </div>
+          {/* Right Column: Refined Form */}
+          <div className="relative">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 dark:bg-gym-gray/30 p-8 rounded-sm shadow-xl">
+              <div className="grid gap-6">
+                <input 
+                  type="text" name="name" placeholder="FULL NAME" required
+                  value={formData.name} onChange={handleChange}
+                  className="w-full p-4 bg-white dark:bg-gym-black border-b-2 border-transparent focus:border-gym-gold outline-none transition-all dark:text-white font-bold placeholder:text-gray-500 uppercase text-xs"
+                />
+                <input 
+                  type="email" name="email" placeholder="EMAIL ADDRESS" required
+                  value={formData.email} onChange={handleChange}
+                  className="w-full p-4 bg-white dark:bg-gym-black border-b-2 border-transparent focus:border-gym-gold outline-none transition-all dark:text-white font-bold placeholder:text-gray-500 uppercase text-xs"
+                />
+                <textarea 
+                  name="message" placeholder="YOUR MESSAGE" rows="4" required
+                  value={formData.message} onChange={handleChange}
+                  className="w-full p-4 bg-white dark:bg-gym-black border-b-2 border-transparent focus:border-gym-gold outline-none transition-all dark:text-white font-bold placeholder:text-gray-500 uppercase text-xs"
+                ></textarea>
+              </div>
 
-            <div className="flex gap-4 pt-4">
-              <button type="submit" className="flex-1 bg-gym-gold text-black py-4 font-black uppercase tracking-widest hover:bg-yellow-500 transition-all shadow-lg active:scale-95">
-                Submit
-              </button>
-              <button type="button" onClick={handleClear} className="px-8 border-2 border-gray-300 dark:border-white/20 dark:text-white text-gym-black py-4 font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all">
-                Clear
-              </button>
-            </div>
-          </form>
+              <div className="flex gap-4">
+                <button 
+                  type="submit" disabled={isSubmitting}
+                  className="flex-1 bg-gym-gold text-black py-4 font-black uppercase tracking-widest hover:bg-white transition-all shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </button>
+              </div>
+            </form>
 
+            {/* Success Feedback Banner */}
+            <AnimatePresence>
+              {showBanner && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
+                  className="absolute -bottom-16 left-0 right-0 bg-gym-gold text-black p-4 text-center font-black uppercase italic text-sm shadow-2xl tracking-widest flex items-center justify-center space-x-2"
+                >
+                  <i className="fas fa-check-circle"></i>
+                  <span>Message Sent Successfully!</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

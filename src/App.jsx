@@ -11,6 +11,7 @@ import Packages from './components/Packages';
 function App() {
   return (
     <div className="min-h-screen">
+      
       <Navbar />
       <Hero />
       <About />
@@ -20,7 +21,7 @@ function App() {
       <Contact />
       <Footer />
 
-      {/* Other sections go here */}
+    
     </div>
   )
 }

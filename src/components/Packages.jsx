@@ -1,9 +1,9 @@
 import React from 'react';
 
 const packages = [
-  { name: "Starter", price: "$29", features: ["Gym Access", "Locker Room", "1 Fitness Eval"], popular: false },
-  { name: "Pro", price: "$59", features: ["24/7 Access", "Group Classes", "Personal Trainer"], popular: true },
-  { name: "Elite", price: "$99", features: ["All Pro Features", "Nutrition Plan", "Spa & Sauna"], popular: false }
+  { name: "Starter", price: "LKR 6,000", features: ["Gym Access", "Locker Room", "1 Fitness Eval"], popular: false },
+  { name: "Pro", price: "LKR 10,000", features: ["24/7 Access", "Group Classes", "Personal Trainer"], popular: true },
+  { name: "Elite", price: "LKR 25,000", features: ["All Pro Features", "Nutrition Plan", "Spa & Sauna"], popular: false }
 ];
 
 const Packages = () => (
