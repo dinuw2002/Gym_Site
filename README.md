@@ -2,7 +2,8 @@
 A high-performance, responsive gym landing page built with React, Tailwind CSS v4, and Framer Motion. This project features a modern Gold and Charcoal aesthetic, dynamic content filtering, and advanced UI animations.
 
 🚀 Live Demo
-[Insert Your Vercel/Netlify Link Here]
+
+https://gym-landing-site.vercel.app/
 
 ✨ Key Features
 Dual-Theme Support: Seamless toggle between Light and Dark modes with persistent state management.
@@ -32,7 +33,7 @@ Deployment: Vercel / GitHub Actions
 
 1. Clone the repository:
 
-   git clone https://github.com/your-username/gym-landing-page.git
+   git clone https://github.com/dinuw2002/Gym_Site.git
 
 2. Install dependencies:
 
