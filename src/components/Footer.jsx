@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="bg-gym-black text-white pt-16 pb-8 px-6 border-t border-gym-gray">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         
-        {/* Column 1: Brand Info */}
+        
         <div className="space-y-6">
           <div className="flex items-center space-x-3">
             <img src={gymLogo} alt="Logo" className="h-10 w-auto brightness-110 shadow-[0_0_10px_rgba(217,166,22,0.3)]" />
@@ -20,7 +20,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Column 2: Quick Links */}
+        
         <div>
           <h4 className="text-gym-gold font-bold uppercase tracking-widest text-sm mb-6">Quick Links</h4>
           <ul className="space-y-4 text-gray-400 text-sm font-medium">
@@ -31,7 +31,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 3: Contact Details */}
+        
         <div>
           <h4 className="text-gym-gold font-bold uppercase tracking-widest text-sm mb-6">Support</h4>
           <ul className="space-y-4 text-gray-400 text-sm font-medium">
@@ -41,7 +41,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 4: Newsletter/CTA */}
+        
         <div>
           <h4 className="text-gym-gold font-bold uppercase tracking-widest text-sm mb-6">Newsletter</h4>
           <p className="text-gray-400 text-xs mb-4">Get fitness tips and gym updates.</p>
@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
+    
       <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-xs uppercase tracking-widest font-bold">
         <p>© 2026 IronCorp Fitness Sports Center. All Rights Reserved.</p>
         <button 

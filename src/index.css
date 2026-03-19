@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* This line tells Tailwind to enable the dark selector */
 @variant dark (&:where(.dark, .dark *));
 
 @theme {

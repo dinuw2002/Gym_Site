@@ -15,13 +15,13 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate an API call
+   
     setTimeout(() => {
       setIsSubmitting(false);
       setShowBanner(true);
       setFormData({ name: '', email: '', message: '' });
       
-      // Auto-hide success message after 4 seconds
+      
       setTimeout(() => setShowBanner(false), 4000);
     }, 1200);
   };
@@ -30,7 +30,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-white dark:bg-gym-black px-6 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header */}
+   
         <div className="text-center mb-16">
           <h2 className="text-gym-gold font-black uppercase tracking-[0.3em] text-sm mb-2">Get In Touch</h2>
           <h1 className="text-5xl md:text-7xl font-black dark:text-white text-gym-black uppercase italic tracking-tighter">
@@ -40,7 +40,7 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-16 items-start">
           
-          {/* Left Column: Info Card */}
+    
           <div className="space-y-8">
             <div className="bg-gym-gray p-10 rounded-sm shadow-2xl border-l-8 border-gym-gold">
               <h3 className="text-gym-gold font-black uppercase italic text-xl mb-6 tracking-widest">Opening Hours</h3>
@@ -64,7 +64,7 @@ const Contact = () => {
               </p>
             </div>
 
-            {/* Social Icons */}
+            
             <div className="flex space-x-8 pt-4">
               {['facebook', 'map-marker-alt', 'whatsapp'].map((icon, idx) => (
                 <a key={idx} href="#" className="text-gym-black dark:text-white hover:text-gym-gold transition-all duration-300 hover:scale-125 text-3xl">
@@ -74,7 +74,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right Column: Refined Form */}
+          
           <div className="relative">
             <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 dark:bg-gym-gray/30 p-8 rounded-sm shadow-xl">
               <div className="grid gap-6">
@@ -105,7 +105,7 @@ const Contact = () => {
               </div>
             </form>
 
-            {/* Success Feedback Banner */}
+            
             <AnimatePresence>
               {showBanner && (
                 <motion.div 

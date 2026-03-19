@@ -24,7 +24,7 @@ const Navbar = () => {
           
         </div>
 
-        {/* Desktop Links */}
+        
         <ul className="hidden md:flex space-x-8 font-bold text-white uppercase text-xs tracking-widest">
           <li><a href="#home" className="hover:text-gym-gold transition">Home</a></li>
           <li><a href="#about" className="hover:text-gym-gold transition">About</a></li>
@@ -33,7 +33,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center space-x-4">
-          {/* Dark Mode Toggle Button */}
+          
           <button 
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full bg-gray-100 dark:bg-gym-gray text-gym-gold hover:scale-110 transition-transform"

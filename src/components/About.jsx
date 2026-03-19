@@ -32,7 +32,7 @@ const About = () => {
     <section id="about" className="bg-white dark:bg-gym-black py-24 px-6 overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
         
-        {/* Left Column: Image with Gold Accent */}
+     
         <div className="md:w-1/2 w-full">
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-gym-gold"></div>
@@ -45,7 +45,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Right Column: Vertical Auto-Carousel */}
+  
         <div className="md:w-1/2 w-full space-y-8">
           <div className="space-y-2">
             <h2 className="text-gym-gold font-black uppercase tracking-[0.3em] text-sm">
@@ -54,14 +54,14 @@ const About = () => {
             <div className="h-1 w-20 bg-gym-gold"></div>
           </div>
 
-          {/* Animation Container */}
+ 
           <div className="relative h-[300px] flex items-center overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}   // Slides up from bottom
-                animate={{ opacity: 1, y: 0 }}    // Settles in center
-                exit={{ opacity: 0, y: -50 }}     // Slides out through top
+                initial={{ opacity: 0, y: 50 }}   
+                animate={{ opacity: 1, y: 0 }}    
+                exit={{ opacity: 0, y: -50 }}     
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 className="absolute w-full"
               >
@@ -75,7 +75,7 @@ const About = () => {
             </AnimatePresence>
           </div>
 
-          {/* Slide Indicators */}
+          
           <div className="flex space-x-3 mt-8">
             {aboutData.map((_, i) => (
               <div 

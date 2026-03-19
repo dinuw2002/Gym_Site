@@ -35,7 +35,6 @@ const Services = () => {
     <section id="services" className="py-24 bg-gym-light dark:bg-gym-black px-6 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         
-        {/* Heading & Search Bar */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="space-y-4">
             <h2 className="text-gym-gold font-black uppercase tracking-[0.3em] text-sm">
@@ -59,14 +58,14 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Services Grid */}
+  
         <div className="grid md:grid-cols-3 gap-8">
           {filteredServices.map((service) => (
             <div 
               key={service.id} 
               className="group bg-white dark:bg-gym-gray rounded-sm overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105 border-b-4 border-transparent hover:border-gym-gold"
             >
-              {/* Image Container */}
+              
               <div className="h-64 overflow-hidden">
                 <img 
                   src={service.image} 
@@ -75,7 +74,7 @@ const Services = () => {
                 />
               </div>
 
-              {/* Content */}
+             
               <div className="p-8 space-y-4">
                 <h3 className="text-2xl font-black dark:text-white text-gym-black uppercase italic">
                   {service.title}

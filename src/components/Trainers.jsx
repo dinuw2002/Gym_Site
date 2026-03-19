@@ -22,7 +22,7 @@ const Trainers = () => (
             <div className="h-[450px] overflow-hidden">
               <img src={t.img} alt={t.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
             </div>
-            {/* Hover Overlay */}
+           
             <div className="absolute inset-0 bg-gradient-to-t from-gym-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
               <h3 className="text-2xl font-black text-white uppercase italic">{t.name}</h3>
               <p className="text-gym-gold font-bold uppercase text-xs tracking-widest mb-4">{t.role}</p>
